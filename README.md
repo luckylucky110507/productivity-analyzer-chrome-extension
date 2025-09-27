@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📊 Productivity Analyzer Chrome Extension
 
 A comprehensive Chrome extension that tracks and analyzes your browsing productivity with detailed insights, visualizations, and goal tracking.
@@ -219,3 +220,6 @@ For issues, questions, or feature requests:
 **Happy Productivity Tracking! 🚀**
 
 *Remember: The goal is not to eliminate all non-productive activities, but to be aware of your habits and make conscious choices about how you spend your time online.*
+=======
+# productivity-analyzer-chrome-extension
+>>>>>>> ea3ea72ef787f02e6d88a4f3641100987435445f
