@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Analyzer - Settings</title>
+    <link rel="stylesheet" href="options.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📊 Productivity Analyzer</h1>
+            <p class="subtitle">Track and analyze your browsing productivity</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="overview">Overview</button>
+            <button class="tab-button" data-tab="settings">Settings</button>
+            <button class="tab-button" data-tab="categories">Categories</button>
+            <button class="tab-button" data-tab="goals">Goals</button>
+            <button class="tab-button" data-tab="data">Data & Privacy</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div class="tab-content active" id="overview">
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>Today's Summary</h3>
+                    <div class="summary-stats">
+                        <div class="stat">
+                            <span class="stat-value" id="todayScore">0%</span>
+                            <span class="stat-label">Productivity Score</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="todayTime">0h 0m</span>
+                            <span class="stat-label">Total Time</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="todaySites">0</span>
+                            <span class="stat-label">Sites Visited</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <h3>7-Day Trend</h3>
+                    <canvas id="trendChart" width="400" height="200"></canvas>
+                </div>
+
+                <div class="overview-card">
+                    <h3>Category Distribution</h3>
+                    <canvas id="categoryChart" width="300" height="300"></canvas>
+                </div>
+
+                <div class="overview-card">
+                    <h3>Top Sites Today</h3>
+                    <div class="sites-list" id="topSites">
+                        <!-- Sites will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="tab-content" id="settings">
+            <div class="settings-section">
+                <h3>General Settings</h3>
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <input type="checkbox" id="trackingEnabled" checked>
+                        <span class="checkmark"></span>
+                        Enable productivity tracking
+                    </label>
+                    <p class="setting-description">Track your browsing activity and calculate productivity metrics</p>
+                </div>
+
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <input type="checkbox" id="idleDetection" checked>
+                        <span class="checkmark"></span>
+                        Enable idle detection
+                    </label>
+                    <p class="setting-description">Stop tracking when you're away from your computer</p>
+                </div>
+
+                <div class="setting-item">
+                    <label for="idleThreshold">Idle threshold (minutes):</label>
+                    <input type="number" id="idleThreshold" min="1" max="60" value="5">
+                    <p class="setting-description">Time of inactivity before considering you idle</p>
+                </div>
+
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <input type="checkbox" id="notifications" checked>
+                        <span class="checkmark"></span>
+                        Enable notifications
+                    </label>
+                    <p class="setting-description">Get notified about your productivity goals and achievements</p>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>Display Settings</h3>
+                <div class="setting-item">
+                    <label for="theme">Theme:</label>
+                    <select id="theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="auto">Auto</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <label for="timeFormat">Time format:</label>
+                    <select id="timeFormat">
+                        <option value="12h">12-hour (AM/PM)</option>
+                        <option value="24h">24-hour</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Tab -->
+        <div class="tab-content" id="categories">
+            <div class="categories-section">
+                <h3>Website Categories</h3>
+                <p class="section-description">Configure how websites are categorized for productivity analysis</p>
+                
+                <div class="category-editor">
+                    <div class="category-item">
+                        <h4>Productive</h4>
+                        <div class="category-domains">
+                            <input type="text" placeholder="Add domain (e.g., github.com)" id="productiveInput">
+                            <button type="button" id="addProductive">Add</button>
+                        </div>
+                        <div class="domain-list" id="productiveList">
+                            <div class="domain-item">
+                                <span>github.com</span>
+                                <button class="remove-domain">×</button>
+                            </div>
+                            <div class="domain-item">
+                                <span>stackoverflow.com</span>
+                                <button class="remove-domain">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-item">
+                        <h4>Social Media</h4>
+                        <div class="category-domains">
+                            <input type="text" placeholder="Add domain (e.g., facebook.com)" id="socialInput">
+                            <button type="button" id="addSocial">Add</button>
+                        </div>
+                        <div class="domain-list" id="socialList">
+                            <div class="domain-item">
+                                <span>facebook.com</span>
+                                <button class="remove-domain">×</button>
+                            </div>
+                            <div class="domain-item">
+                                <span>twitter.com</span>
+                                <button class="remove-domain">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-item">
+                        <h4>Entertainment</h4>
+                        <div class="category-domains">
+                            <input type="text" placeholder="Add domain (e.g., youtube.com)" id="entertainmentInput">
+                            <button type="button" id="addEntertainment">Add</button>
+                        </div>
+                        <div class="domain-list" id="entertainmentList">
+                            <div class="domain-item">
+                                <span>youtube.com</span>
+                                <button class="remove-domain">×</button>
+                            </div>
+                            <div class="domain-item">
+                                <span>netflix.com</span>
+                                <button class="remove-domain">×</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goals Tab -->
+        <div class="tab-content" id="goals">
+            <div class="goals-section">
+                <h3>Daily Goals</h3>
+                <p class="section-description">Set your daily productivity goals and limits</p>
+                
+                <div class="goal-item">
+                    <label for="productiveGoal">Productive time goal (minutes):</label>
+                    <input type="number" id="productiveGoal" min="0" max="1440" value="480">
+                    <p class="goal-description">Target time spent on productive websites</p>
+                </div>
+
+                <div class="goal-item">
+                    <label for="socialLimit">Social media limit (minutes):</label>
+                    <input type="number" id="socialLimit" min="0" max="1440" value="60">
+                    <p class="goal-description">Maximum time allowed on social media</p>
+                </div>
+
+                <div class="goal-item">
+                    <label for="entertainmentLimit">Entertainment limit (minutes):</label>
+                    <input type="number" id="entertainmentLimit" min="0" max="1440" value="120">
+                    <p class="goal-description">Maximum time allowed on entertainment sites</p>
+                </div>
+
+                <div class="goal-item">
+                    <label for="productivityTarget">Productivity score target (%):</label>
+                    <input type="number" id="productivityTarget" min="0" max="100" value="75">
+                    <p class="goal-description">Target daily productivity score</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data & Privacy Tab -->
+        <div class="tab-content" id="data">
+            <div class="data-section">
+                <h3>Data Management</h3>
+                
+                <div class="data-item">
+                    <h4>Export Data</h4>
+                    <p>Download your productivity data as a JSON file</p>
+                    <button class="btn btn-primary" id="exportData">Export Data</button>
+                </div>
+
+                <div class="data-item">
+                    <h4>Clear Data</h4>
+                    <p>Delete all stored productivity data</p>
+                    <button class="btn btn-danger" id="clearData">Clear All Data</button>
+                </div>
+
+                <div class="data-item">
+                    <h4>Privacy</h4>
+                    <p>Your data is stored locally on your device and never sent to external servers. All analysis is performed locally.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" id="saveSettings">Save Settings</button>
+            <button class="btn btn-secondary" id="resetSettings">Reset to Defaults</button>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

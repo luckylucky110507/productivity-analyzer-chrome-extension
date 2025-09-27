@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Analyzer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📊 Productivity Analyzer</h1>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Tracking</span>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <!-- Today's Overview -->
+            <div class="metric-card">
+                <h3>Today's Score</h3>
+                <div class="score-display">
+                    <div class="score-circle" id="todayScore">
+                        <span class="score-number">0</span>
+                        <span class="score-percent">%</span>
+                    </div>
+                </div>
+                <p class="score-label">Productivity Score</p>
+            </div>
+
+            <!-- Time Spent -->
+            <div class="metric-card">
+                <h3>Time Today</h3>
+                <div class="time-display">
+                    <span class="time-number" id="totalTime">0h 0m</span>
+                </div>
+                <p class="time-label">Total Browsing</p>
+            </div>
+
+            <!-- Most Visited Category -->
+            <div class="metric-card">
+                <h3>Top Category</h3>
+                <div class="category-display">
+                    <span class="category-name" id="topCategory">-</span>
+                    <span class="category-time" id="topCategoryTime">0m</span>
+                </div>
+            </div>
+
+            <!-- Productivity Trend -->
+            <div class="metric-card">
+                <h3>7-Day Trend</h3>
+                <div class="trend-display">
+                    <div class="trend-chart" id="trendChart">
+                        <div class="trend-bar" style="height: 20%"></div>
+                        <div class="trend-bar" style="height: 40%"></div>
+                        <div class="trend-bar" style="height: 60%"></div>
+                        <div class="trend-bar" style="height: 80%"></div>
+                        <div class="trend-bar" style="height: 100%"></div>
+                        <div class="trend-bar" style="height: 70%"></div>
+                        <div class="trend-bar active" style="height: 85%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Breakdown -->
+        <div class="category-breakdown">
+            <h3>Time by Category</h3>
+            <div class="category-list" id="categoryList">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="actions">
+            <button class="btn btn-primary" id="viewDetails">View Details</button>
+            <button class="btn btn-secondary" id="openSettings">Settings</button>
+        </div>
+
+        <!-- Goals Progress -->
+        <div class="goals-section">
+            <h3>Daily Goals</h3>
+            <div class="goal-item">
+                <span class="goal-label">Productive Time</span>
+                <div class="goal-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="productiveProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="goal-text" id="productiveText">0 / 480 min</span>
+                </div>
+            </div>
+            <div class="goal-item">
+                <span class="goal-label">Social Media Limit</span>
+                <div class="goal-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="socialProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="goal-text" id="socialText">0 / 60 min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

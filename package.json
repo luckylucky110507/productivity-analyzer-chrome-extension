@@ -1,0 +1,51 @@
+{
+  "name": "productivity-analyzer-chrome-extension",
+  "version": "1.0.0",
+  "description": "A comprehensive Chrome extension that tracks and analyzes your browsing productivity with detailed insights, visualizations, and goal tracking.",
+  "main": "background.js",
+  "scripts": {
+    "build": "echo 'No build process needed for this extension'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linter configured'",
+    "package": "zip -r productivity-analyzer-extension.zip . -x '*.git*' 'node_modules/*' '*.md' 'package*.json'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "productivity",
+    "time-tracking",
+    "analytics",
+    "browser-extension",
+    "web-activity",
+    "goal-tracking",
+    "data-visualization"
+  ],
+  "author": "Productivity Analyzer Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/productivity-analyzer-chrome-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/productivity-analyzer-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/your-username/productivity-analyzer-chrome-extension#readme",
+  "engines": {
+    "chrome": ">=88.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "manifest": {
+    "version": 3,
+    "permissions": [
+      "activeTab",
+      "storage",
+      "tabs",
+      "idle",
+      "alarms",
+      "unlimitedStorage"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ]
+  }
+}

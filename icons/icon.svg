@@ -1,0 +1,31 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="chart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2ecc71;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#bg)" stroke="#fff" stroke-width="4"/>
+  
+  <!-- Chart bars -->
+  <rect x="30" y="70" width="8" height="25" fill="url(#chart)" rx="2"/>
+  <rect x="42" y="60" width="8" height="35" fill="url(#chart)" rx="2"/>
+  <rect x="54" y="50" width="8" height="45" fill="url(#chart)" rx="2"/>
+  <rect x="66" y="40" width="8" height="55" fill="url(#chart)" rx="2"/>
+  <rect x="78" y="45" width="8" height="50" fill="url(#chart)" rx="2"/>
+  <rect x="90" y="55" width="8" height="40" fill="url(#chart)" rx="2"/>
+  
+  <!-- Clock icon -->
+  <circle cx="64" cy="35" r="12" fill="#fff" stroke="url(#chart)" stroke-width="2"/>
+  <line x1="64" y1="35" x2="64" y2="25" stroke="url(#chart)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="64" y1="35" x2="69" y2="40" stroke="url(#chart)" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Productivity arrow -->
+  <path d="M 20 90 L 35 75 L 30 75 L 30 65 L 40 65 L 40 75 L 35 75 L 50 90" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
